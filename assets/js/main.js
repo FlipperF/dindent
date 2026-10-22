@@ -15,6 +15,7 @@ $('[data-close-book]').onclick=()=>booking.close();
 $('#booking-form').addEventListener('submit',e=>{e.preventDefault();$('.form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
 $('#footer-booking-form').addEventListener('submit',e=>{e.preventDefault();$('.footer-form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
 const normalize=s=>s.toLocaleLowerCase('ru').replaceAll('ё','е');
+if($('#doctor-search')){
 let doctorLimit=9;
 const aliases={orthoped:'протезирование коронки ортопед',implant:'имплантация',surgeon:'хирургия удаление',therapy:'лечение зубов кариес',child:'детский дети',ortho:'брекеты элайнеры прикус',perio:'десны пародонтология',hygiene:'чистка гигиена',anesthesia:'сон наркоз анестезия',endo:'каналы микроскоп'};
 const mobileDoctorsMedia=matchMedia('(max-width:760px)');
@@ -37,8 +38,9 @@ mobileDoctorsMedia.addEventListener('change',()=>{doctorLimit=9;filterDoctors();
 $('#show-more-doctors').onclick=()=>{doctorLimit+=9;filterDoctors();};
 $('#reset-doctors').onclick=()=>{$('#doctor-search').value='';$('#specialty').value='all';doctorLimit=9;filterDoctors();$('#doctor-search').focus();};
 filterDoctors();
-$('#comparison-range').addEventListener('input',e=>$('.comparison').style.setProperty('--compare',e.target.value+'%'));
-if(window.gsap){gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{const tl=gsap.timeline({defaults:{ease:'power2.out'}});tl.from('.hero-copy > *',{y:8,autoAlpha:0,duration:.28,stagger:.04},0).from('.hero-side',{x:8,autoAlpha:0,duration:.28},.15);});}
+}
+$('#comparison-range')?.addEventListener('input',e=>$('.comparison').style.setProperty('--compare',e.target.value+'%'));
+if(window.gsap && $('.hero-copy')){gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{const tl=gsap.timeline({defaults:{ease:'power2.out'}});tl.from('.hero-copy > *',{y:8,autoAlpha:0,duration:.28,stagger:.04},0).from('.hero-side',{x:8,autoAlpha:0,duration:.28},.15);});}
 
 const stickyHeader=$('.sticky-header');
 const stickyObserver=new IntersectionObserver(entries=>{const active=!entries[0].isIntersecting&&entries[0].boundingClientRect.bottom<0;stickyHeader.classList.toggle('is-visible',active);stickyHeader.inert=!active;},{threshold:0});
@@ -89,8 +91,8 @@ new ResizeObserver(queueServiceSync).observe(serviceNav);
 const motionEase='cubic-bezier(.23,1,.32,1)';
 const revealObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(!entry.isIntersecting)continue;revealObserver.unobserve(entry.target);if(!reduced())entry.target.animate([{opacity:.72,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:250,easing:motionEase});}},{threshold:.15});
 $$('.service-benefit,.family-photo,.appointment-photo,.installment-heading,.article').forEach(el=>revealObserver.observe(el));
-const moreServices=$('.more-services'),moreSummary=$('summary',moreServices);let accordionMotion=null,accordionExpanded=moreServices.open;
-moreSummary.addEventListener('click',e=>{
+const moreServices=$('.more-services'),moreSummary=moreServices?$('summary',moreServices):null;let accordionMotion=null,accordionExpanded=moreServices?.open;
+moreSummary?.addEventListener('click',e=>{
  if(reduced()||e.detail===0)return;
  e.preventDefault();const wasOpen=accordionExpanded;accordionExpanded=!wasOpen;const from=moreServices.getBoundingClientRect().height;
  accordionMotion?.cancel();moreServices.style.height='auto';moreServices.open=true;
@@ -103,7 +105,7 @@ const doctorMotionObserver=new MutationObserver(records=>{const shown=records.fi
 $$('.doctor-card').forEach(card=>doctorMotionObserver.observe(card,{attributes:true,attributeFilter:['hidden']}));
 
 document.addEventListener('keydown',()=>document.documentElement.classList.add('keyboard-navigation'));document.addEventListener('pointerdown',()=>document.documentElement.classList.remove('keyboard-navigation'),{passive:true});
-moreServices.addEventListener('toggle',()=>{if(!accordionMotion)accordionExpanded=moreServices.open;});
+moreServices?.addEventListener('toggle',()=>{if(!accordionMotion)accordionExpanded=moreServices?.open;});
 
 const siteNavigation=$('#site-navigation');let siteNavOpener=null;
 $$('[data-site-menu]').forEach(button=>button.addEventListener('click',()=>{siteNavOpener=button;siteNavigation.showModal();$$('[data-site-menu]').forEach(b=>b.setAttribute('aria-expanded','true'));}));
