@@ -6,3 +6,5 @@
 @media(max-width:760px){.services-hero{padding:28px 22px;gap:28px}.services-hero aside{padding:28px 24px}.services-directory .service-directory-card{padding:26px}}
 /* Fixed, symmetric icon tiles: center the SVG drawing inside its tinted square. */
 .service-directory-card .service-card-top>.icon{display:block;flex:0 0 58px;width:58px;height:58px;box-sizing:border-box;padding:11px;overflow:visible}
+
+.service-directory-card .service-card-more{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#3c8fcb;color:#fff!important;border:1px solid #3c8fcb;border-radius:10px;padding:14px 20px;min-height:48px;font-size:15px;font-weight:500;line-height:1.4;text-decoration:none;margin-top:auto;transition:background .2s,border-color .2s}.service-directory-card .service-card-more:hover{background:#307fb8;border-color:#307fb8;color:#fff!important}.service-card-more .icon{color:#fff!important;width:20px;height:20px;flex-shrink:0}
