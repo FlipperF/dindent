@@ -16,7 +16,7 @@ $('#booking-form').addEventListener('submit',e=>{e.preventDefault();$('.form-sta
 $('#footer-booking-form').addEventListener('submit',e=>{e.preventDefault();$('.footer-form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
 const normalize=s=>s.toLocaleLowerCase('ru').replaceAll('ё','е');
 if($('#doctor-search')){
-let doctorLimit=9;
+let doctorLimit=6;
 const aliases={orthoped:'протезирование коронки ортопед',implant:'имплантация',surgeon:'хирургия удаление',therapy:'лечение зубов кариес',child:'детский дети',ortho:'брекеты элайнеры прикус',perio:'десны пародонтология',hygiene:'чистка гигиена',anesthesia:'сон наркоз анестезия',endo:'каналы микроскоп'};
 const mobileDoctorsMedia=matchMedia('(max-width:760px)');
 const doctorCards=$$('.doctor-card');
@@ -33,10 +33,10 @@ function filterDoctors(){
  $('#doctor-count').textContent=mobileDefault?'Показаны '+visible.size+' из '+count:count+' '+(last===1&&teen!==11?'специалист':last>=2&&last<=4&&(teen<12||teen>14)?'специалиста':'специалистов');
  $('#doctor-empty').hidden=count!==0;$('#show-more-doctors').hidden=mobileDefault||count<=doctorLimit;
 }
-mobileDoctorsMedia.addEventListener('change',()=>{doctorLimit=9;filterDoctors();});
-['input','change'].forEach(event=>$(event==='input'?'#doctor-search':'#specialty').addEventListener(event,()=>{doctorLimit=9;filterDoctors();}));
-$('#show-more-doctors').onclick=()=>{doctorLimit+=9;filterDoctors();};
-$('#reset-doctors').onclick=()=>{$('#doctor-search').value='';$('#specialty').value='all';doctorLimit=9;filterDoctors();$('#doctor-search').focus();};
+mobileDoctorsMedia.addEventListener('change',()=>{doctorLimit=6;filterDoctors();});
+['input','change'].forEach(event=>$(event==='input'?'#doctor-search':'#specialty').addEventListener(event,()=>{doctorLimit=6;filterDoctors();}));
+$('#show-more-doctors').onclick=()=>{doctorLimit+=6;filterDoctors();};
+$('#reset-doctors').onclick=()=>{$('#doctor-search').value='';$('#specialty').value='all';doctorLimit=6;filterDoctors();$('#doctor-search').focus();};
 filterDoctors();
 }
 $('#comparison-range')?.addEventListener('input',e=>$('.comparison').style.setProperty('--compare',e.target.value+'%'));
@@ -47,9 +47,9 @@ const stickyObserver=new IntersectionObserver(entries=>{const active=!entries[0]
 stickyHeader.inert=true;stickyObserver.observe($('.header'));
 
 const filmDialog=$('#clinic-film'),filmFrame=$('iframe',filmDialog);
-$('.clinic-film-button').addEventListener('click',()=>{filmFrame.src=filmFrame.dataset.videoSrc+'&autoplay=1';filmDialog.showModal();});
+$('.clinic-film-button')?.addEventListener('click',()=>{const videoUrl=new URL(filmFrame.dataset.videoSrc);videoUrl.searchParams.set('autoplay','1');filmFrame.src=videoUrl.href;filmDialog.showModal();});
 $('.film-close').addEventListener('click',()=>filmDialog.close());
-filmDialog.addEventListener('close',()=>{filmFrame.removeAttribute('src');$('.clinic-film-button').focus();});
+filmDialog.addEventListener('close',()=>{filmFrame.removeAttribute('src');$('.clinic-film-button')?.focus();});
 filmDialog.addEventListener('click',e=>{if(e.target===filmDialog){const r=filmDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)filmDialog.close();}});
 
 function phoneDigits(value){let n=value.replace(/\D/g,'');if(n[0]==='7'||n[0]==='8')n=n.slice(1);return n.slice(0,10);}
@@ -142,3 +142,8 @@ overflowMenu.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefaul
 
 $$('[data-callback]').forEach(button=>button.addEventListener('click',()=>{$('#booking-title').textContent='Заказать бесплатный звонок';$('#booking-description').textContent='Оставьте номер — администратор свяжется с вами';$('.form-status').textContent='';booking.showModal();}));
 booking.addEventListener('close',()=>{$('#booking-title').textContent='Знакомство начинается с улыбки';});
+
+ document.querySelectorAll("#services-menu [data-book]").forEach(b=>b.addEventListener("click",()=>document.querySelector("#services-menu").close()));
+
+// Static hosting uses directory URLs; file previews use explicit index.html files.
+if(location.protocol!=='file:')document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(/(?:^|\/)doctors\/(?:bandurin-yurij-valerevich\/)?index\.html(?:#.*)?$/.test(href))a.setAttribute('href',href.replace(/index\.html(?=#|$)/,''));});

@@ -34,6 +34,12 @@
   </script>
   <script defer="" src="assets/js/main.js">
   </script>
+  <link href="assets/css/refinements.css" rel="stylesheet"/>
+  <link href="assets/images/brand/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="assets/images/brand/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="assets/images/brand/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link color="#5bbad5" href="assets/images/brand/safari-pinned-tab.svg" rel="mask-icon"/>
+  <link href="assets/images/brand/favicon.ico" rel="shortcut icon"/>
  </head>
  <body>
   <svg aria-hidden="true" class="svg-library" xmlns="http://www.w3.org/2000/svg">
@@ -346,7 +352,7 @@
      <a href="o-klinike.html">
       О клинике
      </a>
-     <a href="#doctors">
+     <a href="doctors/index.html">
       Наши врачи
      </a>
      <a href="#works">
@@ -399,7 +405,7 @@
      <a href="o-klinike.html">
       О клинике
      </a>
-     <a href="#doctors">
+     <a href="doctors/index.html">
       Наши врачи
      </a>
      <a href="#works">
@@ -571,9 +577,14 @@
        <div aria-hidden="true" class="moon-art">
        </div>
        <h2>
-        Вы отдыхаете.
-        <br/>
-        Мы лечим.
+        <span class="hero-card-desktop-title">
+         Вы отдыхаете.
+         <br/>
+         Мы лечим.
+        </span>
+        <span class="hero-card-mobile-title">
+         Лечение зубов во сне
+        </span>
        </h2>
        <p>
         Лечение зубов во сне
@@ -586,15 +597,23 @@
          </use>
         </svg>
        </a>
+       <p class="hero-card-mobile-description">
+        Без тревоги — для детей и взрослых
+       </p>
       </article>
       <a class="offer-card" href="https://dindent.ru/aktsii/" id="offers" rel="noopener" target="_blank">
        <span>
         Знакомство с клиникой
        </span>
        <h2>
-        Начните
-        <br/>
-        с консультации
+        <span class="hero-card-desktop-title">
+         Начните
+         <br/>
+         с консультации
+        </span>
+        <span class="hero-card-mobile-title">
+         Начните с консультации
+        </span>
        </h2>
        <div>
         <span>
@@ -607,6 +626,9 @@
          </use>
         </svg>
        </div>
+       <p class="hero-card-mobile-description">
+        Понятный план. Ответы на ваши вопросы.
+       </p>
       </a>
      </div>
     </section>
@@ -711,7 +733,7 @@
         Наши возможности. Комплекс стоматологических услуг с современной анестезией
        </p>
       </div>
-      <button aria-controls="services-menu" aria-expanded="false" class="text-btn" data-menu="">
+      <button aria-controls="services-menu" aria-expanded="false" class="text-btn section-action" data-menu="">
        Все направления
        <svg aria-hidden="true" class="icon">
         <use href="#i-grid">
@@ -1019,12 +1041,8 @@
         По направлению лечения или по имени — как вам удобнее
        </p>
       </div>
-      <a class="text-btn" href="https://dindent.ru/doctors/" rel="noopener" target="_blank">
-       Вся команда
-       <svg aria-hidden="true" class="icon">
-        <use href="#i-arrow">
-        </use>
-       </svg>
+      <a class="section-action text-btn" href="doctors/index.html">
+       Все врачи клиники →
       </a>
      </div>
      <div class="doctor-finder">
@@ -1095,7 +1113,7 @@
      </div>
      <div class="doctors-grid">
       <article class="doctor-card" data-name="бандурин юрий валерьевич" data-specialty="orthoped">
-       <a class="portrait" href="https://dindent.ru/doctors/bandurin-yurij-valerevich/" rel="noopener" target="_blank">
+       <a class="portrait" href="doctors/bandurin-yurij-valerevich/index.html" rel="noopener" target="_blank">
         <img alt="Бандурин Юрий Валерьевич" height="600" loading="lazy" src="assets/images/doctors/doctor.jpg" width="450"/>
         <span>
          <svg aria-hidden="true" class="icon">
@@ -2174,9 +2192,9 @@
          </path>
         </defs>
         <text>
-         <textpath href="#film-circle" textLength="388">
+         <textPath href="#film-circle" textLength="388">
           СМОТРЕТЬ ВИДЕО О КЛИНИКЕ · ДИНАСТИЯ ·
-         </textpath>
+         </textPath>
         </text>
        </svg>
        <span class="film-play">
@@ -2243,12 +2261,8 @@
         Результаты, за которыми стоят наши врачи
        </p>
       </div>
-      <a class="text-btn" href="https://dindent.ru/gallery-works/" rel="noopener" target="_blank">
-       Другие работы
-       <svg aria-hidden="true" class="icon">
-        <use href="#i-arrow">
-        </use>
-       </svg>
+      <a class="section-action text-btn" href="https://dindent.ru/gallery-works/" rel="noopener" target="_blank">
+       Другие работы →
       </a>
      </div>
      <div class="case-layout">
@@ -2425,12 +2439,8 @@
         Дополнительная информация. Полезная информация для пациентов
        </p>
       </div>
-      <a class="text-btn" href="https://dindent.ru/informations/" rel="noopener" target="_blank">
-       Все статьи
-       <svg aria-hidden="true" class="icon">
-        <use href="#i-arrow">
-        </use>
-       </svg>
+      <a class="section-action text-btn" href="https://dindent.ru/informations/" rel="noopener" target="_blank">
+       Все статьи →
       </a>
      </div>
      <div class="articles-grid">
@@ -2519,7 +2529,6 @@
        </span>
        <h3>
         ул. Чехова,
-        <br/>
         д. 1, к. 1
        </h3>
        <p class="clinic-phone">
@@ -2539,7 +2548,6 @@
        </span>
        <h3>
         ул. Набережная,
-        <br/>
         д. 35, к. 5
        </h3>
        <p class="clinic-phone">
@@ -2559,7 +2567,6 @@
        </span>
        <h3>
         Московский пр-т,
-        <br/>
         д. 57, к. 3
        </h3>
        <p class="clinic-phone">
@@ -2579,7 +2586,6 @@
        </span>
        <h3>
         Центральный пр-д,
-        <br/>
         д. 7
        </h3>
        <p class="clinic-phone">
@@ -2864,7 +2870,7 @@
        </use>
       </svg>
      </a>
-     <a class="" href="https://dindent.ru/doctors/" rel="noopener" target="_blank">
+     <a class="" href="doctors/index.html">
       Команда
       <svg aria-hidden="true" class="icon">
        <use href="#i-arrow">
@@ -4543,9 +4549,12 @@
     <span>
      Не знаете, с чего начать?
     </span>
-    <a href="tel:+74997072535">
-     Поможем подобрать лечение · +7 (499) 707-25-35
+    <a aria-label="Позвонить в клинику: +7 (499) 707-25-35" href="tel:+74997072535">
+     +7 (499) 707-25-35
     </a>
+    <button class="btn btn-green menu-book-action" data-book="" type="button">
+     Записаться на приём
+    </button>
    </div>
   </dialog>
   <dialog aria-labelledby="booking-title" class="booking-dialog" id="booking">
@@ -4657,7 +4666,7 @@
     <a href="o-klinike.html">
      О клинике
     </a>
-    <a href="#doctors">
+    <a href="doctors/index.html">
      Наши врачи
     </a>
     <a href="#works">
