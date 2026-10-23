@@ -49,3 +49,9 @@ body.page-about .about-team-bottom a.about-all-doctors:visited{background:transp
 body.page-about .about-team-bottom a.about-all-doctors .icon,
 body.page-about .about-team-bottom a.about-all-doctors svg{color:#2878b0!important;stroke:currentColor}
 body.page-about .about-team-bottom a.about-all-doctors:hover{background:#e7f2fa!important;color:#226b9e!important}
+/* Current section is explicit in desktop, overflow and mobile navigation. */
+.header nav>a[aria-current="page"],.sticky-header nav>a[aria-current="page"],.nav-overflow-panel>a[aria-current="page"],#site-navigation nav>a[aria-current="page"]{color:#4a8e25!important;background:#edf5e6!important;border-radius:8px;box-shadow:inset 0 -2px #5aa62c}
+.header nav>.header-services{order:-1;margin-right:10px;flex-shrink:0}
+
+/* Active navigation: straight underline only. */
+.header nav>a[aria-current="page"],.sticky-header nav>a[aria-current="page"],.nav-overflow-panel>a[aria-current="page"],#site-navigation nav>a[aria-current="page"]{background:transparent!important;border-radius:0!important;box-shadow:inset 0 -2px #5aa62c;color:inherit!important}
