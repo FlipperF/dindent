@@ -1,0 +1,1 @@
+document.querySelectorAll('.sleep-lead-form').forEach(form=>form.addEventListener('submit',event=>{event.preventDefault();form.querySelector('.sleep-lead-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';}));

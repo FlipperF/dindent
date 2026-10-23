@@ -43,3 +43,9 @@ label:has(>#doctor-search),div:has(>#doctor-search){border:1px solid #b6cfdc!imp
 /* Keep about-page appointment actions blue at every viewport width. */
 body.page-about .about-team .doctor-card .doctor-book{background:#3c8fcb!important;border-color:#3c8fcb!important;color:#fff!important}
 body.page-about .about-team .doctor-card .doctor-book:hover{background:#307fb8!important;border-color:#307fb8!important;color:#fff!important}
+/* Override shared filled-button text rules on the outlined team link. */
+body.page-about .about-team-bottom a.about-all-doctors,
+body.page-about .about-team-bottom a.about-all-doctors:visited{background:transparent!important;color:#2878b0!important;border:1px solid #3c8fcb}
+body.page-about .about-team-bottom a.about-all-doctors .icon,
+body.page-about .about-team-bottom a.about-all-doctors svg{color:#2878b0!important;stroke:currentColor}
+body.page-about .about-team-bottom a.about-all-doctors:hover{background:#e7f2fa!important;color:#226b9e!important}
