@@ -1,5 +1,6 @@
 # Apache 2.4+: public URLs without .html; local files remain ordinary HTML.
 DirectoryIndex index.html
+ErrorDocument 404 /404.html
 
 <IfModule mod_negotiation.c>
     Options -MultiViews

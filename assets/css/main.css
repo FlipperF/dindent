@@ -4376,8 +4376,9 @@ body {
   left:calc(var(--rail) + 20px);
   right:34px;
   z-index:40;
-  background:#fffffff5;
-  backdrop-filter:blur(16px);
+  background:#fff;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
   border:1px solid #dfebef;
   border-radius:16px;
   box-shadow:0 8px 35px #3b71951a;
@@ -4388,13 +4389,13 @@ body {
   gap:25px;
   opacity:0;
   visibility:hidden;
-  transform:translateY(-120%);
-  transition:transform .25s,opacity .25s,visibility .25s
+  transform:none;
+  transition:opacity .16s ease-out,visibility .16s
 }
 .sticky-header.is-visible {
   opacity:1;
   visibility:visible;
-  transform:translateY(0)
+  transform:none
 }
 .sticky-header nav {
   display:flex;
@@ -8328,3 +8329,7 @@ button,.btn {
  .mobile-contact>a,.sticky-header .mobile-contact>a{font-size:14px}
  .mobile-contact>span,.sticky-header .mobile-contact>span{font-size:14px;letter-spacing:-.7px}
 }
+/* Slide in from above the viewport; rest without a transform for crisp text. */
+.sticky-header{background:#fff;filter:none;backdrop-filter:none;-webkit-backdrop-filter:none;opacity:1;clip-path:none;transform:translateY(calc(-100% - 32px));visibility:hidden;transition:transform .32s var(--ease-out),visibility 0s linear .32s;will-change:auto}
+.sticky-header.is-visible{opacity:1;visibility:visible;transform:none;transition:transform .32s var(--ease-out),visibility 0s}
+@media(prefers-reduced-motion:reduce){.sticky-header,.sticky-header.is-visible{transition:none}}

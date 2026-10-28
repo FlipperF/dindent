@@ -1,0 +1,25 @@
+/* Responsive corrections verified at 320–2560 CSS pixels. */
+main :is(h1,h2,h3,h4,h5),.doctor-body{min-width:0;overflow-wrap:anywhere}
+.doctor-body :is(h3,h4){hyphens:auto;overflow-wrap:anywhere}
+@media(min-width:761px){
+.price-categories,.article-sidebar{max-height:calc(100dvh - 135px);overflow-y:auto;scrollbar-width:thin;overscroll-behavior:contain}
+.article-sidebar{padding:0 2px 4px}
+}
+@media(max-width:360px){
+.page-doctors .team-group .team-card{grid-template-columns:34% minmax(0,1fr)!important}
+.page-doctors .team-group .team-card h4{font-size:16px;line-height:1.4}
+.page-doctors .team-group .team-card .doctor-body{padding:15px 12px}
+.team-intro-compact h1{font-size:27px}
+.contact-shortcuts a{gap:8px}.contact-shortcuts a>span:first-child{overflow-wrap:normal}
+}
+@media(max-width:760px){body.page-price{padding-bottom:calc(90px + env(safe-area-inset-bottom))}}
+/* Keep anchored headings clear of the floating header. */
+main>section[id],.team-group[id],.cases-section[id],.patients-blog[id]{scroll-margin-top:90px}
+/* Touch controls keep their labels when selecting or tapping. */
+button,summary{ -webkit-user-select:none;user-select:none }
+/* Large price values must fit beside their action on a narrow phone. */
+@media(max-width:360px){.price-row{column-gap:10px}.price-row .price-amount{font-size:18px}.price-row .price-book{padding:10px 11px}}
+/* A dialog scrolls internally; the page behind it stays still on touch too. */
+html{scrollbar-gutter:stable}
+html:has(dialog[open]){overflow:hidden}
+@media(max-width:360px){.mobile-contact>span .mobile-days{display:none}}

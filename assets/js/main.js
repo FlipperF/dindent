@@ -13,7 +13,7 @@ $('#service-search').addEventListener('input',filterServices);
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{const doctor=b.dataset.doctor;$('#booking-description').textContent=doctor?'Запись к врачу: '+doctor:'Выберите удобную клинику и оставьте номер телефона';$('.form-status').textContent='';booking.showModal();}));
 $('[data-close-book]').onclick=()=>booking.close();
 $('#booking-form').addEventListener('submit',e=>{e.preventDefault();$('.form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
-$('#footer-booking-form').addEventListener('submit',e=>{e.preventDefault();$('.footer-form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
+$('#footer-booking-form')?.addEventListener('submit',e=>{e.preventDefault();$('.footer-form-status').textContent='Для подтверждения записи позвоните: +7 (499) 707-25-35';});
 const normalize=s=>s.toLocaleLowerCase('ru').replaceAll('ё','е');
 if($('#doctor-search')){
 let doctorLimit=6;
